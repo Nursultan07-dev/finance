@@ -1,0 +1,146 @@
+body {
+  display: flex;
+  flex-direction: column; /* чтобы элементы шли сверху вниз */
+  align-items: center;    /* центрируем горизонтально */
+  justify-content: flex-start; /* вертикально сверху */
+  margin: 0;
+  overflow: hidden;
+  background-color: black;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+ @keyframes float {
+  from { transform: translateY(0px); }
+  to   { transform: translateY(-40px); } 
+  }
+
+/* Ссылка с эффектом стрелки */
+.start-link {
+  color: white;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.start-link:hover {
+  color: yellow;
+  cursor: pointer;
+}
+
+.start-link::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -25px;          /* слева от текста */
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid white; /* стрелка смотрит вправо */
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  opacity: 0;
+  transition: opacity 0.3s, left 0.3s;
+}
+
+.start-link:hover::before {
+  opacity: 1;
+  left: -30px;          /* чуть сдвигаем при наведении */
+}
+
+.good-luck {
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  animation: spin 4s linear infinite, rainbow 3s linear infinite;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Крутим слово */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Радужный градиент меняется */
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.good-luck {
+  position: relative;
+  top: 150px; /* сдвигает вниз на 50px */
+}
+.back-button {
+  position: fixed;
+  left: -20px;             
+  top: 95%;               
+  transform: translateY(-50%);
+  padding: 15px 50px 15px 30px; /* место справа для стрелки */
+  font-family: 'Press Start 2P', cursive;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.back-button:hover {
+  color: rgb(255, 255, 255);          
+  cursor: pointer;
+}
+
+/* Стрелка справа, смотрит влево */
+.back-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;               
+  right: 15px;            
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-right: 15px solid white; /* меняем на border-right, чтобы стрелка смотрела влево */
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  opacity: 0;             
+  transition: opacity 0.3s, right 0.3s;
+}
+
+.back-button:hover::after {
+  opacity: 1;             
+  right: 10px;            
+}
+
+input, button {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 14px;
+  padding: 5px;
+  margin: 5px;
+  width: 120px;
+}
+canvas {
+  margin: 20px;
+  background-color: #111;
+  border-radius: 50%;
+}
+.wheel-container { display: inline-block; vertical-align: top; }
+#message { margin-top: 20px; }
+table { 
+  margin: 20px auto; 
+  border-collapse: collapse; 
+  width: 90%;
+}
+th, td { 
+  border: 1px solid white; 
+  padding: 10px; 
+  text-align: center; 
+}
+th { background-color: #222; }
+.positive { color: lime; }
+.negative { color: red; }
